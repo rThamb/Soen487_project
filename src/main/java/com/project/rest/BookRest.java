@@ -35,10 +35,6 @@ public class BookRest {
     @Path("{title}")
     public String getBook(@PathParam("title") String title) {
 
-        if(library.size() == 0){
-            loadMock();
-        }
-
         Book book = library.stream().filter(theBook -> theBook.getTitle().equals(title))
                 .findFirst()
                 .orElse(null);
@@ -59,10 +55,6 @@ public class BookRest {
     @Path("{title}/{author}/{isbn}")
     public void modifyBook(@PathParam("title") String title, @PathParam("author") String author,
                                @PathParam("isbn") String isbn) {
-
-        if(library.size() == 0){
-            loadMock();
-        }
 
         library = library.stream().filter(book -> !book.getTitle().equals(title))
                 .collect(Collectors.toCollection(ArrayList::new));
