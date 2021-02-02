@@ -1,5 +1,7 @@
 package com.project.core.models;
 
+import java.util.Objects;
+
 public class Artist {
 
     private String nickname;
@@ -8,6 +10,13 @@ public class Artist {
     private String bio;
 
     public Artist(){}
+
+    public Artist(Artist a){
+        this.nickname = a.nickname;
+        this.firstname = a.firstname;
+        this.lastname = a.lastname;
+        this.bio = a.bio;
+    }
 
     public String getNickname() {
         return nickname;
@@ -39,5 +48,23 @@ public class Artist {
 
     public void setBio(String bio) {
         this.bio = bio;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Artist artist = (Artist) o;
+        return nickname.equals(artist.nickname);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nickname);
+    }
+
+    @Override
+    public String toString(){
+        return "";
     }
 }
