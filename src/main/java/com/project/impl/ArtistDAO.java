@@ -60,4 +60,5 @@ public class ArtistDAO implements ArtistRepo {
         a.setNickname(nickname);
         this.artists.remove(a);
     }
+
 }

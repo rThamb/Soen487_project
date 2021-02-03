@@ -78,6 +78,6 @@ public class Album {
 
     @Override
     public String toString(){
-        return "";
+        return String.format("%s %s %s %s", this.isrc, this.title, this.year + "", this.description);
     }
 }

@@ -52,10 +52,14 @@ public class Artist {
 
     @Override
     public boolean equals(Object o) {
+
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Artist artist = (Artist) o;
-        return nickname.equals(artist.nickname);
+        if (!(o == null || getClass() != o.getClass())) {
+            Artist artist = (Artist) o;
+            return nickname.equals(artist.nickname);
+        }
+        else
+            return false;
     }
 
     @Override
@@ -65,6 +69,7 @@ public class Artist {
 
     @Override
     public String toString(){
-        return "";
+        return String.format("%s %s %s %s", this.nickname, this.firstname, this.lastname, this.bio);
     }
+
 }
