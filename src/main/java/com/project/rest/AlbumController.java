@@ -1,32 +1,74 @@
 package com.project.rest;
 
+import com.project.core.models.Album;
+import com.project.core.repos.AlbumRepo;
+import com.project.impl.AlbumDAO;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
+
 
 @Path("album")
 public class AlbumController {
 
+    private static AlbumRepo repo = new AlbumDAO();
+
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("{isrc}/{title}")
+    public String getAlbums(@PathParam("isrc") String isrc, @PathParam("title") String title) {
+        return isrc + "";
+    }
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("{isrc}")
-    public String getAlbum(@PathParam("isrc") String isrc) {
-        return isrc + "";
+    public String getDetails(@PathParam("isrc") String isrc) {
+        try {
+            Album a = repo.read(isrc);
+            return a.toString();
+        }catch (Exception e){
+            return "Operation Failed.";
+        }
     }
 
     @PUT
-    //@Path("{isrc}")
-    public void addAlbum() {
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String addAlbum(Album album) {
 
-        /*
-        library = library.stream().filter(book -> !book.getTitle().equals(title))
-                .collect(Collectors.toCollection(ArrayList::new));
-        Book newBook = new Book(title, author, isbn);
-        library.add(newBook);
-
-         */
+        try {
+            this.repo.add(album);
+            return "New Album added";
+        }catch (Exception e){
+            return "Operation Failed.";
+        }
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String editAlbum(Album album){
+
+        try {
+            this.repo.update(album);
+            return "Updated album";
+        }catch (Exception e){
+            return "Operation Failed.";
+        }
+    }
+
+    @DELETE
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("{isrc}")
+    public String deleteAlbum(@PathParam("isrc") String isrc) {
+        try {
+            this.repo.delete(isrc);
+            return "Deleted album";
+        }catch (Exception e){
+            return "Operation Failed.";
+        }
+    }
+
 
 }

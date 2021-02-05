@@ -1,8 +1,11 @@
 package com.project.core.models;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Artist {
+@XmlRootElement
+public class Artist implements Serializable {
 
     private String nickname;
     private String firstname;
@@ -69,7 +72,7 @@ public class Artist {
 
     @Override
     public String toString(){
-        return String.format("%s %s %s %s", this.nickname, this.firstname, this.lastname, this.bio);
+        return String.format("{\n\tnickname: %s,\n\tfirst: %s,\n\tlast: %s,\n\tbio: %s\n}", this.nickname, this.firstname, this.lastname, this.bio);
     }
 
 }

@@ -27,7 +27,7 @@ public class AlbumDAO implements AlbumRepo {
 
     @Override
     public Album read(String isrc) {
-        Album album = this.albums.stream().filter(ele -> ele.getIsrc().equals(isrc))
+        Album album = this.albums.stream().filter(ele -> ele.getIsrc().equalsIgnoreCase(isrc))
                 .findFirst()
                 .orElse(null);
 

@@ -7,7 +7,7 @@
     <artifactId>soen487</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <name>tutorial02</name>
+    <name>Assignment 1</name>
 
     <dependencyManagement>
         <dependencies>
@@ -44,12 +44,12 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>2.3.2</version>
         </dependency>
-        <!-- uncomment this to get JSON support:
+        <!-- uncomment this to get JSON support: -->
          <dependency>
             <groupId>org.glassfish.jersey.media</groupId>
             <artifactId>jersey-media-moxy</artifactId>
         </dependency>
-        -->
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

@@ -1,8 +1,11 @@
 package com.project.core.models;
 
+import javax.xml.bind.annotation.XmlRootElement;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Album {
+@XmlRootElement
+public class Album implements Serializable {
 
     private String isrc;
     private String title;
@@ -17,7 +20,8 @@ public class Album {
         this.title = a.title;
         this.description = a.description;
         this.year = a.year;
-        this.artist = new Artist(a.artist);
+        if(a.artist != null)
+            this.artist = new Artist(a.artist);
     }
 
     public String getIsrc() {
@@ -78,6 +82,7 @@ public class Album {
 
     @Override
     public String toString(){
-        return String.format("%s %s %s %s", this.isrc, this.title, this.year + "", this.description);
+        return String.format("{\n\tisrc: %s,\n\ttitle:%s,\n\tyear: %s,\n\t desc: %s\n}",
+                this.isrc, this.title, this.year + "", this.description);
     }
 }
