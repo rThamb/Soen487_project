@@ -3,6 +3,7 @@ package com.project.rest;
 import com.project.core.models.Album;
 import com.project.core.repos.AlbumRepo;
 import com.project.impl.AlbumDAO;
+import com.project.impl.factory.AlbumRepoFactory;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -11,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 @Path("album")
 public class AlbumController {
 
-    private static AlbumRepo repo = new AlbumDAO();
+    private AlbumRepo repo = AlbumRepoFactory.getInstance();
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
