@@ -4,6 +4,7 @@ public class App {
 
     public static void main(String[] args) {
 
+        /*
         BookClient bookClient = new BookClient();
 
         String book = "Book 1";
@@ -19,6 +20,8 @@ public class App {
 
         String addBookCheck = bookClient.getBookByTitle(newBookT);
         System.out.println("(READ Existing BOOK): " + addBookCheck);
+
+         */
 
     }
 }

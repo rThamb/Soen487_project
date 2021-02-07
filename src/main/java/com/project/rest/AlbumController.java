@@ -1,9 +1,8 @@
 package com.project.rest;
 
-import com.project.core.models.Album;
-import com.project.core.repos.AlbumRepo;
-import com.project.impl.AlbumDAO;
-import com.project.impl.factory.AlbumRepoFactory;
+import impl.factory.AlbumRepoFactory;
+import lib.models.Album;
+import lib.repos.AlbumRepo;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
